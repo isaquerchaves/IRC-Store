@@ -57,7 +57,7 @@ const Header = () => {
                 {status == "unauthenticated" && (
                     <Button 
                     onClick={handleLoginClick} 
-                    variant="ouline" 
+                    variant="outline" 
                     className="w-full justify-start gap-2"
                 >
                     <LogInIcon size={16}/>
@@ -68,7 +68,7 @@ const Header = () => {
                 {status == "authenticated" && (
                     <Button 
                     onClick={handleLogoutClick} 
-                    variant="ouline" 
+                    variant="outline" 
                     className="w-full justify-start gap-2"
                 >
                     <LogOutIcon size={16}/>
@@ -76,17 +76,17 @@ const Header = () => {
                 </Button>
                 )}
 
-                <Button variant="ouline" className="w-full justify-start gap-2">
+                <Button variant="outline" className="w-full justify-start gap-2">
                     <HomeIcon size={16}/>
                     Início
                 </Button>
 
-                <Button variant="ouline" className="w-full justify-start gap-2">
+                <Button variant="outline" className="w-full justify-start gap-2">
                     <PercentIcon size={16}/>
                     Ofertas
                 </Button>
                 
-                <Button variant="ouline" className="w-full justify-start gap-2">
+                <Button variant="outline" className="w-full justify-start gap-2">
                     <ListOrderedIcon size={16}/>
                     Catálogo
                 </Button>
