@@ -1,20 +1,20 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import Header from '@/components/ui/header'
-import { AuthProvider } from "@/providers/auth"
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import Header from "@/components/ui/header";
+import { AuthProvider } from "@/providers/auth";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'IRC Store',
-  description: 'App de E-Commerce criado por Isaque Chaves',
-}
+  title: "IRC Store",
+  description: "App de E-Commerce criado por Isaque Chaves",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -23,7 +23,7 @@ export default function RootLayout({
           <Header />
           {children}
         </AuthProvider>
-        </body>
+      </body>
     </html>
-  )
+  );
 }
