@@ -24,7 +24,7 @@ export default async function Home() {
         className="mx-auto my-auto h-auto w-full max-w-full p-5 lg:max-w-2xl"
         sizes="100vw"
       />
-      <div className="mx-auto my-auto mt-8 h-auto w-full max-w-full p-5 lg:max-w-2xl">
+      <div className="mx-auto my-auto h-auto w-full max-w-full p-5 lg:max-w-2xl">
         <Categories />
       </div>
 
