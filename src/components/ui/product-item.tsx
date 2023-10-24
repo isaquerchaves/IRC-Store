@@ -38,11 +38,11 @@ const ProductItem = ({ product }: ProductItemProps) => {
         <div className="flex items-center gap-2">
           {product.discountPercentage > 0 ? ( // Se o produto tiver desconto, vai mostrar o preço com desconto
             <>
+              <p className="text-xs line-through opacity-75">
+                  R$ {Number(product.basePrice).toFixed(2)}
+              </p>
               <p className="font-semibold">
                 R$ {product.totalPrice.toFixed(2)}
-              </p>
-              <p className="text-xs line-through opacity-75">
-                R$ {Number(product.basePrice).toFixed(2)}
               </p>
             </>
           ) : (
@@ -52,6 +52,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
             </p>
           )}
         </div>
+        
       </div>
     </div>
   );
