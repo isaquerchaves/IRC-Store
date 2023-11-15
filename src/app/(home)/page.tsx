@@ -3,7 +3,7 @@ import React from "react";
 import Categories from "./components/categories";
 import { prismaClient } from "@/lib/prisma";
 import ProductList from "../../components/ui/product-list";
-import SectionTitle from "./components/section-title";
+import SectionTitle from "../../components/ui/section-title";
 import PromoBanner from "./components/promo-banner";
 import Link from "next/link";
 
