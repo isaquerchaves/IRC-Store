@@ -1,6 +1,6 @@
 import React from "react";
 import { prismaClient } from "../../../lib/prisma";
-import ProductImages from "../../category/[slug]/components/product-images";
+import ProductImages from "./components/product-images";
 
 interface ProductDetailsPageProps {
     params: {
