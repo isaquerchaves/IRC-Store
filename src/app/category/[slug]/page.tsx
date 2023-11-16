@@ -1,10 +1,9 @@
 import React from "react";
-import { prismaClient } from "../../../lib/prisma";
-import { Badge } from "../../../components/ui/Badge";
-import { ShapesIcon } from "lucide-react";
-import { computerProductTotalPrice } from "../../../helpers/product";
-import ProductItem from "../../../components/ui/product-item";
-import { CATEGORY_ICON } from "../../../constants/category-icon";
+import { prismaClient } from "@/lib/prisma";
+import { Badge } from "@/components/ui/badge";
+import { computerProductTotalPrice } from "@/helpers/product";
+import ProductItem from "@/components/ui/product-item";
+import { CATEGORY_ICON } from "@/constants/category-icon";
 
 const CategoryProducts = async ({ params }: any) => {
   const category = await prismaClient.category.findFirst({

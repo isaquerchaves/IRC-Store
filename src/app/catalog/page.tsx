@@ -1,7 +1,7 @@
 import React from "react";
 import {ShapesIcon} from "lucide-react";
-import { Badge } from "../../components/ui/badge";
-import { prismaClient } from "../../lib/prisma";
+import { Badge } from "@/components/ui/badge";
+import { prismaClient } from "@/lib/prisma";
 import CategoryItem from "./components/category-item";
 
 
