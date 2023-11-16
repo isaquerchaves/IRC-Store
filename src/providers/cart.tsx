@@ -1,9 +1,9 @@
 "use client";
 
-import { Product } from "@prisma/client";
+import { ProductWithTotalPrice } from "@/helpers/product";
 import { ReactNode, createContext, useState } from "react";
 
-interface CartProduct extends Product{
+export interface CartProduct extends ProductWithTotalPrice {
     quantity: number;
 }
 
@@ -15,22 +15,42 @@ interface ICartContext {
     addProductToCart: (product: CartProduct) => void;
 }
 
-export const CartContext = createContext<ICartContext> ({
+export const CartContext = createContext<ICartContext>({
     products: [],
     cartTotalPrice: 0,
     cartBasePrice: 0,
     cartTotalDiscount: 0,
-    addProductToCart: () => {},
+    addProductToCart: () => { },
 });
 
-const CartProvider = ({children}: {children: ReactNode}) => {
+const CartProvider = ({ children }: { children: ReactNode }) => {
     const [products, setProducts] = useState<CartProduct[]>([]);
 
     const addProductToCart = (product: CartProduct) => {
+        // se o produto já estiver no carrinho, apenas aumente a quantidade
+        const productIsAlreadyOnCart = products.some(
+            (cartProduct) => cartProduct.id == product.id,
+        );
+
+        if (productIsAlreadyOnCart) {
+            setProducts((prev) =>
+                prev.map((cartProduct) => {
+                    if (cartProduct.id == product.id) {
+                        return {
+                            ...cartProduct,
+                            quantity: cartProduct.quantity + product.quantity,
+                        };
+                    };
+                    return cartProduct
+                }),
+            );
+            return;
+        };
+        // se não, adicione o produto na lista
         setProducts((prev) => [...prev, product]);
     };
 
-    return ( 
+    return (
         <CartContext.Provider
             value={{
                 products,
@@ -42,7 +62,7 @@ const CartProvider = ({children}: {children: ReactNode}) => {
         >
             {children}
         </CartContext.Provider>
-     );
+    );
 }
- 
+
 export default CartProvider;
