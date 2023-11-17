@@ -1,27 +1,34 @@
-import React from "react";
-import {ShapesIcon} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { prismaClient } from "@/lib/prisma";
+import { ArrowLeftIcon, ShapesIcon } from "lucide-react";
 import CategoryItem from "./components/category-item";
-
+import Link from "next/link";
 
 const CatalogPage = async () => {
-    const categories = await prismaClient.category.findMany({});
+  const categories = await prismaClient.category.findMany({});
+  return (
+    <div className="flex flex-col gap-8 p-5 lg:container">
+      <div className="flex items-center gap-5">
+        <Link href="/">
+          <ArrowLeftIcon size={22} />
+        </Link>
 
+        <Badge
+          className="w-fit gap-1 border-2 border-primary px-3 py-[0.375rem] text-base uppercase"
+          variant="outline"
+        >
+          <ShapesIcon size={16} />
+          Catálogo
+        </Badge>
+      </div>
 
-    return ( 
-        <div className="p-5 flex flex-col gap-8">
-            <Badge className="w-fit gap-1 text-base uppercase border-primary px-3 py-[0.375rem] border-2" 
-                    variant="outline">
-                <ShapesIcon size={16}/>
-                Catálogo
-            </Badge>
+      <div className="grid grid-cols-2 gap-8 lg:grid-cols-3">
+        {categories.map((category) => (
+          <CategoryItem key={category.id} category={category} />
+        ))}
+      </div>
+    </div>
+  );
+};
 
-            <div className="grid grid-cols-2 flex-wrap gap-8">
-                {categories.map(category => <CategoryItem key={category.id} category={category}/>)}
-            </div>
-        </div>
-    );
-}
- 
 export default CatalogPage;
