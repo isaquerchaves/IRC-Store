@@ -1,27 +1,55 @@
-import { ShapesIcon } from "lucide-react";
+import { ShoppingCartIcon } from "lucide-react";
 import { Badge } from "./badge";
 import { useContext } from "react";
 import { CartContext } from "@/providers/cart";
 import CartItem from "./cart-item";
 import { computerProductTotalPrice } from "@/helpers/product";
+import { Separator } from "./separator";
 
 const Cart = () => {
-    const { products } = useContext(CartContext);
+    const { products, subtotal, total, totalDiscount } = useContext(CartContext);
 
     return (
         <div className="flex flex-col gap-8">
             <Badge className="w-fit gap-1 text-base uppercase border-primary px-3 py-[0.375rem] border-2"
                 variant="outline">
-                <ShapesIcon size={16} />
-                Catálogo
+                <ShoppingCartIcon size={16} />
+                carrinho
             </Badge>
 
             {/*RENDERIZAR OS PRODUTOS*/}
             <div className="flex flex-col gap-5">
-                {products.map((product) => (
-                    <CartItem key={product.id}
-                        product={computerProductTotalPrice(product as any) as any} />
-                ))}
+                {products.length > 0 ?
+                    (
+                        products.map((product) => (
+                        <CartItem key={product.id}
+                            product={computerProductTotalPrice(product as any) as any} />
+                    ))
+                    ) : (
+                        <p className="text-center font-semibold">O carrinho está vazio!</p>
+                    )}
+            </div>
+            <div className="flex flex-col gap-3">
+                <Separator />
+                <div className="flex items-center justify-between text-xs">
+                    <p>Subtotal</p>
+                    <p>R$ {subtotal.toFixed(2)}</p>
+                </div>
+                <Separator />
+                <div className="flex items-center justify-between text-xs">
+                    <p>Entrega</p>
+                    <p>GRÁTIS</p>
+                </div>
+                <Separator />
+                <div className="flex items-center justify-between text-xs">
+                    <p>Descontos</p>
+                    <p>- R$ {totalDiscount.toFixed(2)}</p>
+                </div>
+                <Separator />
+                <div className="flex items-center justify-between text-sm font-bold">
+                    <p>Total</p>
+                    <p>R$ {total.toFixed(2)}</p>
+                </div>
             </div>
         </div>
     );
