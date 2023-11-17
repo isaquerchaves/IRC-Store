@@ -12,12 +12,12 @@ interface ProductDetailsPageProps {
     }
 }
 
-const ProductDetailsPage = async ({params: {slug},}: ProductDetailsPageProps) => {
+const ProductDetailsPage = async ({ params: { slug }, }: ProductDetailsPageProps) => {
     const product = await prismaClient.product.findFirst({
         where: {
             slug: slug,
         },
-        include:{
+        include: {
             category: {
                 include: {
                     products: {
@@ -32,18 +32,20 @@ const ProductDetailsPage = async ({params: {slug},}: ProductDetailsPageProps) =>
         }
     });
 
-    if(!product) return null;
-    
-    return ( 
-        <div className="flex flex-col gap-8 pb-8">
-            <ProductImages imageUrls={product.imageUrls} name={product.name} />
-            <ProductInfo product={computerProductTotalPrice(product)} />
-            <div>
+    if (!product) return null;
+
+    return (
+        <div className="flex flex-col gap-8 pb-8 lg:container lg:mx-auto lg:gap-10 lg:px-5 lg:py-10">
+            <div className="flex flex-col gap-8 lg:flex-row lg:gap-9">
+                <ProductImages imageUrls={product.imageUrls} name={product.name} />
+                <ProductInfo product={computerProductTotalPrice(product)} />
+            </div>
+            <div className="flex flex-col gap-5">
                 <SectionTitle>Produtos Recomendados</SectionTitle>
                 <ProductList products={product.category.products} />
             </div>
         </div>
-        );
+    );
 }
- 
+
 export default ProductDetailsPage;
