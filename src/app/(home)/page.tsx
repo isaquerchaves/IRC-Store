@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import Categories from "./components/categories";
 import { prismaClient } from "@/lib/prisma";
