@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# IRC Store
 
-## Getting Started
+Este projeto é um e-commerce de periféricos games, desenvolvido utilizando React, Next.js, NextAuth.js com login via Google, TypeScript, Prisma, PostgreSQL e Tailwind CSS. A aplicação oferece funcionalidades completas de uma loja online, incluindo login, visualização de produtos, criação de carrinho de compras, e cálculos detalhados de valores. A aplicação é totalmente responsiva, proporcionando uma experiência de usuário otimizada em dispositivos móveis e desktops.
 
-First, run the development server:
+## Descrição
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+IRC Store é um e-commerce de periféricos para jogos, projetado para oferecer uma experiência de compra completa e intuitiva. Os usuários podem se autenticar via Google, visualizar todos os periféricos disponíveis, conferir promoções, criar e gerenciar carrinhos de compras, e filtrar produtos por categoria. A aplicação é totalmente responsiva, garantindo uma navegação fluida em qualquer dispositivo.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tecnologias Utilizadas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [NextAuth.js](https://next-auth.js.org/) (com login via Google)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Prisma](https://www.prisma.io/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Funcionalidades
 
-## Learn More
+- Login via Google
+- Visualização de todos os periféricos
+- Visualização de periféricos em promoção
+- Criação e gerenciamento de carrinho de compras
+- Filtro de produtos por categoria
+- Cálculo detalhado de valores, incluindo:
+  - Valor total dos itens no carrinho
+  - Subtotais com e sem descontos aplicados
+  - Quantidade total de itens
+- Responsividade para dispositivos móveis e desktops
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+A aplicação está disponível em: [IRC Store](https://irc-store.vercel.app/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Instalação e Uso
 
-## Deploy on Vercel
+1. Clone o repositório:
+    ```bash
+    git clone https://github.com/isaquerchaves/IRC-Store.git
+    cd IRC-Store
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. Instale as dependências:
+    ```bash
+    npm install
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+3. Configure as variáveis de ambiente no arquivo `.env`:
+    ```env
+    DATABASE_URL=your_database_url
+    NEXTAUTH_URL=your_nextauth_url
+    GOOGLE_CLIENT_ID=your_google_client_id
+    GOOGLE_CLIENT_SECRET=your_google_client_secret
+    ```
+
+4. Execute as migrações do Prisma:
+    ```bash
+    npx prisma migrate dev
+    ```
+
+5. Inicie o servidor de desenvolvimento:
+    ```bash
+    npm run dev
+    ```
+
+6. Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver a aplicação em execução.
